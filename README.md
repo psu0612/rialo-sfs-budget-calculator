@@ -18,15 +18,6 @@ It helps you demo a simple question:
 3. Pick a **Scenario preset** (or edit numbers).
 4. Share your screen and walk through the results.
 
-## Deploy (GitHub Pages)
-
-1. Create a new GitHub repo (e.g., `rialo-sfs-budget-calculator`).
-2. Upload these files (`index.html`, `app.js`, `styles.css`, `README.md`).
-3. Go to **Settings → Pages → Deploy from a branch** and select:
-   - Branch: `main`
-   - Folder: `/ (root)`
-4. Your site will be published at a GitHub Pages URL.
-
 ## Suggested Builders Hub story
 
 1) “Reactive transactions can trigger execution natively (time/price/events).”
