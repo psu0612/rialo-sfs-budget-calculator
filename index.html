@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rialo – Stake-for-Service Budget Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>Rialo – Stake-for-Service Budget Calculator</h1>
+    <p class="sub">
+      A tiny, static demo you can show in Builders Hub: <b>Can a recurring, reactive workflow fund itself forever?</b>
+    </p>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <h2>Inputs</h2>
+
+      <div class="field">
+        <label for="preset">Scenario preset (optional)</label>
+        <select id="preset">
+          <option value="custom" selected>Custom (manual)</option>
+          <option value="subscription_hourly">Subscription / recurring payment (hourly)</option>
+          <option value="oracle_5min">Oracle update / data feed (every 5 min)</option>
+          <option value="nft_daily">Dynamic NFT update (daily)</option>
+          <option value="stoploss_event">Stop-loss / conditional order (event-driven)</option>
+        </select>
+        <div class="hint">Pick a preset to auto-fill typical demo numbers. You can still edit everything.</div>
+      </div>
+
+      <div class="field">
+        <label for="principal">Staked principal (RLO)</label>
+        <input id="principal" type="number" step="0.0001" value="1000" />
+        <div class="hint">Example: 1000 RLO staked by an app/DAO/user.</div>
+      </div>
+
+      <div class="field">
+        <label for="apy">Staking yield (APY %)</label>
+        <input id="apy" type="number" step="0.01" value="8" />
+        <div class="hint">Use any assumption. This is a conceptual calculator.</div>
+      </div>
+
+      <div class="field">
+        <label for="routing">SfS routing fraction (% of yield routed to service credits)</label>
+        <input id="routing" type="number" step="0.1" value="25" />
+        <div class="hint">Example: route 25% of yield to ServicePaymaster credits.</div>
+      </div>
+
+      <hr />
+
+      <div class="field">
+        <label for="costPerRun">Cost per workflow run (credits)</label>
+        <input id="costPerRun" type="number" step="0.0001" value="0.02" />
+        <div class="hint">Think: gas/storage/automation cost for <i>one</i> triggered execution.</div>
+      </div>
+
+      <div class="field">
+        <label for="runsPerDay">Runs per day</label>
+        <input id="runsPerDay" type="number" step="1" value="24" />
+        <div class="hint">Example: hourly reactive trigger → 24 runs/day.</div>
+      </div>
+
+      <button id="calcBtn">Recalculate</button>
+    </section>
+
+    <section class="card">
+      <h2>Results</h2>
+
+      <div class="kpi">
+        <div class="k">Daily yield routed to credits</div>
+        <div class="v" id="dailyYield">–</div>
+      </div>
+
+      <div class="kpi">
+        <div class="k">Daily workflow cost</div>
+        <div class="v" id="dailyCost">–</div>
+      </div>
+
+      <div class="kpi">
+        <div class="k">Daily surplus / deficit</div>
+        <div class="v" id="dailyNet">–</div>
+      </div>
+
+      <hr />
+
+      <div class="kpi">
+        <div class="k">Break-even staked principal (RLO)</div>
+        <div class="v" id="breakEven">–</div>
+      </div>
+
+      <div class="kpi">
+        <div class="k">Max sustainable runs/day</div>
+        <div class="v" id="maxRuns">–</div>
+      </div>
+
+      <div class="note" id="verdict"></div>
+
+      <details class="explain">
+        <summary>How this maps to Rialo primitives (talking points)</summary>
+        <ul>
+          <li><b>Reactive transactions</b> let the chain trigger execution when predicates are met (time, price, events, etc.).</li>
+          <li><b>Stake-for-Service</b> routes staking yield into service credits (via the ServicePaymaster) that can pay for recurring operations.</li>
+          <li>This demo shows the budgeting logic: if yield-funded credits ≥ recurring cost, the workflow is self-sustaining.</li>
+        </ul>
+      </details>
+
+      <details class="explain">
+        <summary>Suggested demo story (30 seconds)</summary>
+        <ol>
+          <li>“I want a subscription / DCA / automation workflow to run without manual babysitting.”</li>
+          <li>“Reactive tx handles triggers natively (no cron/keepers).”</li>
+          <li>“SfS funds repeated executions from staking yield.”</li>
+          <li>“This calculator checks if it can run forever under simple assumptions.”</li>
+        </ol>
+      </details>
+    </section>
+
+    <section class="card wide">
+      <h2>Mini script you can read (easy English)</h2>
+      <pre id="scriptBox"></pre>
+
+      <details class="explain">
+        <summary>Korean version (for you)</summary>
+        <pre id="koreanBox"></pre>
+      </details>
+
+      <p class="hint">
+        Tip: keep your mic time short. Let the demo + links do the talking. Put this text in speaker notes.
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>
+      Starter kit for community demos. Not official Rialo software. Numbers are assumptions.
+      <br/>
+      Learn more:
+      <a href="https://www.rialo.io/posts/stake-for-service" target="_blank" rel="noreferrer">Stake-for-Service</a>
+      · <a href="https://www.rialo.io/posts/reactive-transactions-a-model-for-native-automation-on-rialo" target="_blank" rel="noreferrer">Reactive Transactions</a>
+      · <a href="https://www.rialo.io/posts/rialo-foundations-ii-supermodularity" target="_blank" rel="noreferrer">Supermodularity (automated operations)</a>
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
