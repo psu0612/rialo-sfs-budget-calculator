@@ -11,7 +11,7 @@ It helps you demo a simple question:
 - **Stake-for-Service (SfS)**: routing a fraction of staking yield into **service credits** (via ServicePaymaster) to automatically pay for gas/storage/scheduled executions.
 - **Reactive transactions / native automation**: workflows that can execute when predicates/conditions are met.
 
-## Quick start (no coding)
+## Quick start
 
 1. Download this repo.
 2. Open `index.html` in your browser.
