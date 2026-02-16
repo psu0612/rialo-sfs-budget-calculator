@@ -1,9 +1,5 @@
 # Stake-for-Service (SfS) Budget Calculator (Rialo Builders Hub demo)
 
-A **tiny static website** you can deploy with GitHub Pages in minutes.
-
-It helps you demo a simple question:
-
 > If a reactive, recurring workflow runs N times/day and each run costs X (credits), can routed staking yield cover it forever?
 
 ## What it demonstrates (conceptually)
